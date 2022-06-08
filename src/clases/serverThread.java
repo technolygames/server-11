@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * 
  * @author erick
  */
-public class serverThread implements Runnable{
+public class serverThread extends Thread{
     protected InputStream is;
     protected OutputStream os;
     

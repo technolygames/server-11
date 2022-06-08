@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.BorderLayout;
 import paneles.serverConfig;
 import paneles.serverPanel;
+import paneles.serverSender;
 
 public class sendFiles extends javax.swing.JFrame{
     public sendFiles(){
@@ -24,6 +25,11 @@ public class sendFiles extends javax.swing.JFrame{
         jMenuItem2.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverPanel(),BorderLayout.CENTER);
+        });
+        
+        jMenuItem3.addActionListener((a)->{
+            this.getContentPane().setLayout(new BorderLayout());
+            this.getContentPane().add(new serverSender(),BorderLayout.CENTER);
         });
     }
     

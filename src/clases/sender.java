@@ -26,7 +26,7 @@ public class sender{
             Socket s=new Socket(p.getProperty("ip"),Integer.parseInt(p.getProperty("port")));
             InputStream is=new FileInputStream(dir);
             OutputStream os=s.getOutputStream();
-            new clientThread(is,os).run();
+            new Thread(new clientThread(is,os)).start();
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
         }

@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -17,48 +18,69 @@ import javax.swing.JTextArea;
  * 
  * @author erick
  */
-public class receiver{
-    protected ServerSocket ss;
+public class receiver implements Runnable{
+    protected static Properties p;
+    protected static ServerSocket ss;
+    
+    static{
+        try{
+            p=new Properties();
+            p.load(new FileInputStream(System.getProperty("user.dir")+"/src/data/config/config.properties"));
+            ss=new ServerSocket(Integer.parseInt(p.getProperty("port")));
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+        }
+    }
+    
+    protected Socket s;
     protected int puerto;
     protected boolean estado;
-    protected JTextArea area;
+    protected JLabel etiqueta;
+    protected InputStream is;
+    protected OutputStream os;
     
-    public receiver(JTextArea textArea){
-        this.area=textArea;
+    public receiver(JLabel label){
+        this.etiqueta=label;
     }
+    
     /**
      * Receive data from a client and store it on server PC.
      */
-    public void receiveFiles(){
+    @Override
+    public void run(){
         try{
-            Properties p=new Properties();
-            p.load(new FileInputStream(System.getProperty("user.dir")+"/src/data/config/config.properties"));
-            ss=new ServerSocket(Integer.parseInt(p.getProperty("port")));
-            System.out.println("El puerto "+ss.getLocalPort()+" está activo");
-            PrintStream ps=new PrintStream(new CustomOutputStream(area));
-            System.setOut(ps);
-            System.setErr(ps);
+            String mensaje="El puerto "+ss.getLocalPort()+" está activo";
+            etiqueta.setText(mensaje);
             while(true){
-                Socket s=ss.accept();
+                s=ss.accept();
                 estado=s.isConnected();
                 puerto=s.getPort();
-                InputStream is=s.getInputStream();
-                OutputStream os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/test"+(int)(Math.random()*10000)+".txt");
+                is=s.getInputStream();
+                os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/test"+(int)(Math.random()*10000)+".txt");
                 new serverThread(is,os).run();
             }
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            //JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+        }catch(NullPointerException x){
+            
         }
     }
     
     /**
      * Close the server.
      */
-    public void closeServer(){
+    public synchronized void closeServer(){
         try{
             ss.close();
+            /*s.close();
+            os.flush();
+            is.close();
+            os.close();*/
+            etiqueta.setText("Se apagó el servidor");
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            //JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+        }catch(NullPointerException x){
+            
         }
     }
     
