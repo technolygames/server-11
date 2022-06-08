@@ -43,7 +43,7 @@ public class receiver{
                 estado=s.isConnected();
                 puerto=s.getPort();
                 InputStream is=s.getInputStream();
-                OutputStream os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/test"+(Math.random()*10000)+".txt");
+                OutputStream os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/test"+(int)(Math.random()*10000)+".txt");
                 new serverThread(is,os).run();
             }
         }catch(IOException e){
@@ -51,6 +51,9 @@ public class receiver{
         }
     }
     
+    /**
+     * Close the server.
+     */
     public void closeServer(){
         try{
             ss.close();

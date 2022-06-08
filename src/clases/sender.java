@@ -9,10 +9,16 @@ import java.util.Properties;
 import javax.swing.JOptionPane;
 
 /**
+ * Sends files between a device to a server.
  * 
  * @author erick
  */
 public class sender{
+    /**
+     * Send a specified file to a server using internet through an specified port and ip address.
+     * 
+     * @param dir File to send to the server.
+     */
     public void sendFiles(String dir){
         try{
             Properties p=new Properties();
