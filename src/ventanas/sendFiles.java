@@ -1,6 +1,9 @@
 package ventanas;
 
 import java.awt.BorderLayout;
+import java.io.IOException;
+import java.net.InetAddress;
+import javax.swing.JOptionPane;
 import paneles.serverConfig;
 import paneles.serverPanel;
 import paneles.serverSender;
@@ -31,6 +34,14 @@ public class sendFiles extends javax.swing.JFrame{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverSender(),BorderLayout.CENTER);
         });
+        
+        jMenuItem4.addActionListener((a)->{
+            try{
+                JOptionPane.showMessageDialog(null,InetAddress.getLocalHost().getHostAddress());
+            }catch(IOException e){
+                JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+            }
+        });
     }
     
     @SuppressWarnings("unchecked")
@@ -43,6 +54,8 @@ public class sendFiles extends javax.swing.JFrame{
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +73,13 @@ public class sendFiles extends javax.swing.JFrame{
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Extra");
+
+        jMenuItem4.setText("IP del equipo");
+        jMenu2.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -90,9 +110,11 @@ public class sendFiles extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

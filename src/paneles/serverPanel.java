@@ -1,7 +1,6 @@
 package paneles;
 
 import clases.receiver;
-import javax.swing.SwingUtilities;
 
 public class serverPanel extends javax.swing.JPanel{
     public serverPanel(){

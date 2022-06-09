@@ -5,13 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 /**
  * Receive data from an application and stores it on server PC.
@@ -60,9 +58,9 @@ public class receiver implements Runnable{
                 new serverThread(is,os).run();
             }
         }catch(IOException e){
-            //JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
         }catch(NullPointerException x){
-            
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\n Causado por:\n"+x.getCause());
         }
     }
     
@@ -80,7 +78,7 @@ public class receiver implements Runnable{
         }catch(IOException e){
             //JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
         }catch(NullPointerException x){
-            
+            //JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\n Causado por:\n"+x.getCause());
         }
     }
     
