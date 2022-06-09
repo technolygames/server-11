@@ -37,9 +37,9 @@ public class serverConfig extends javax.swing.JPanel{
             p.setProperty("ip",jTextField2.getText());
             p.store(new FileWriter(System.getProperty("user.dir")+"/src/data/config/config.properties"),"server_config");
         }catch(FileNotFoundException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
         }catch(IOException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\n Causado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
         }
     }
     
@@ -50,9 +50,9 @@ public class serverConfig extends javax.swing.JPanel{
             jTextField1.setText(p.getProperty("port"));
             jTextField2.setText(p.getProperty("ip"));
         }catch(FileNotFoundException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
         }catch(IOException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\n Causado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
         }
     }
     

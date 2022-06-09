@@ -12,6 +12,7 @@ public class sendFiles extends javax.swing.JFrame{
     public sendFiles(){
         initComponents();
         
+        setResizable(false);
         botones();
     }
     
@@ -20,22 +21,25 @@ public class sendFiles extends javax.swing.JFrame{
             System.exit(0);
         });
         
-        jMenuItem1.addActionListener((a)->{
+        miConfigServer.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverConfig(),BorderLayout.CENTER);
+            pack();
         });
         
-        jMenuItem2.addActionListener((a)->{
+        miServer.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverPanel(),BorderLayout.CENTER);
+            pack();
         });
         
-        jMenuItem3.addActionListener((a)->{
+        miSendData.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverSender(),BorderLayout.CENTER);
+            pack();
         });
         
-        jMenuItem4.addActionListener((a)->{
+        miAddress.addActionListener((a)->{
             try{
                 JOptionPane.showMessageDialog(null,InetAddress.getLocalHost().getHostAddress());
             }catch(IOException e){
@@ -50,36 +54,36 @@ public class sendFiles extends javax.swing.JFrame{
 
         closeButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        panelMenu = new javax.swing.JMenu();
+        miConfigServer = new javax.swing.JMenuItem();
+        miServer = new javax.swing.JMenuItem();
+        miSendData = new javax.swing.JMenuItem();
+        extraMenu = new javax.swing.JMenu();
+        miAddress = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         closeButton.setText("Cerrar programa");
 
-        jMenu1.setText("Ventanas");
+        panelMenu.setText("Ventanas");
 
-        jMenuItem1.setText("Configurar servidor");
-        jMenu1.add(jMenuItem1);
+        miConfigServer.setText("Configurar servidor");
+        panelMenu.add(miConfigServer);
 
-        jMenuItem2.setText("Servidor");
-        jMenu1.add(jMenuItem2);
+        miServer.setText("Servidor");
+        panelMenu.add(miServer);
 
-        jMenuItem3.setText("Enviar datos");
-        jMenu1.add(jMenuItem3);
+        miSendData.setText("Enviar datos");
+        panelMenu.add(miSendData);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(panelMenu);
 
-        jMenu2.setText("Extra");
+        extraMenu.setText("Extra");
 
-        jMenuItem4.setText("IP del equipo");
-        jMenu2.add(jMenuItem4);
+        miAddress.setText("IP del equipo");
+        extraMenu.add(miAddress);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(extraMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -88,14 +92,14 @@ public class sendFiles extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
+                .addContainerGap(287, Short.MAX_VALUE)
                 .addComponent(closeButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(245, Short.MAX_VALUE)
+                .addContainerGap(255, Short.MAX_VALUE)
                 .addComponent(closeButton)
                 .addContainerGap())
         );
@@ -109,12 +113,12 @@ public class sendFiles extends javax.swing.JFrame{
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu extraMenu;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem miAddress;
+    private javax.swing.JMenuItem miConfigServer;
+    private javax.swing.JMenuItem miSendData;
+    private javax.swing.JMenuItem miServer;
+    private javax.swing.JMenu panelMenu;
     // End of variables declaration//GEN-END:variables
 }

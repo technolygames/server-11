@@ -13,7 +13,7 @@ public class serverSender extends javax.swing.JPanel{
     }
     
     protected final void botones(){
-        jButton1.addActionListener((a)->{
+        chooserButton.addActionListener((a)->{
             JFileChooser fileChooser=new JFileChooser();
             fileChooser.setFileFilter(new FileNameExtensionFilter("Archivo de texto","txt"));
             if(JFileChooser.APPROVE_OPTION==fileChooser.showOpenDialog(null)){
@@ -22,7 +22,7 @@ public class serverSender extends javax.swing.JPanel{
             }
         });
         
-        jButton2.addActionListener((a)->{
+        closeButton.addActionListener((a)->{
             setVisible(false);
         });
         
@@ -38,16 +38,16 @@ public class serverSender extends javax.swing.JPanel{
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         sendButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        chooserButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
         jLabel1.setText("Dirección");
 
         sendButton.setText("Enviar");
 
-        jButton1.setText("Seleccionar");
+        chooserButton.setText("Seleccionar");
 
-        jButton2.setText("Cerrar panel");
+        closeButton.setText("Cerrar panel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -61,12 +61,12 @@ public class serverSender extends javax.swing.JPanel{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(chooserButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(sendButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(0, 238, Short.MAX_VALUE)))
+                        .addComponent(closeButton)
+                        .addGap(0, 218, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -76,17 +76,17 @@ public class serverSender extends javax.swing.JPanel{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(chooserButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendButton)
-                    .addComponent(jButton2))
+                    .addComponent(closeButton))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton chooserButton;
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton sendButton;

@@ -58,9 +58,9 @@ public class receiver implements Runnable{
                 new serverThread(is,os).run();
             }
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
         }catch(NullPointerException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\n Causado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
         }
     }
     
@@ -76,9 +76,9 @@ public class receiver implements Runnable{
             os.close();*/
             etiqueta.setText("Se apagó el servidor");
         }catch(IOException e){
-            //JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
         }catch(NullPointerException x){
-            //JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\n Causado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
         }
     }
     

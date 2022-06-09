@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author erick
  */
 public class sender{
+    
     /**
      * Send a specified file to a server using internet through an specified port and ip address.
      * 
@@ -28,7 +29,7 @@ public class sender{
             OutputStream os=s.getOutputStream();
             new Thread(new clientThread(is,os)).start();
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\n Causado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
         }
     }
 }
