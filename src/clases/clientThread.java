@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.JOptionPane;
+
 /**
  * Thread made to read files which sends to a server.
  * 
@@ -35,6 +36,10 @@ public class clientThread implements Runnable{
             while((leido=is.read(buffer))>0){
                 os.write(buffer,0,leido);
             }
+            
+            is.close();
+            os.flush();
+            os.close();
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
         }

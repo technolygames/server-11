@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * 
  * @author erick
  */
-public class receiver implements Runnable{
+public class receiver extends Thread implements Runnable{
     protected static Properties p;
     protected static ServerSocket ss;
     
@@ -32,13 +32,20 @@ public class receiver implements Runnable{
     
     protected Socket s;
     protected int puerto;
-    protected boolean estado;
     protected JLabel etiqueta;
+    protected JLabel etiEstado;
     protected InputStream is;
     protected OutputStream os;
     
-    public receiver(JLabel label){
+    /**
+     * This class gets file sent from a client with the specified port and IP address of the server machine.
+     * 
+     * @param label sets a message with the port number to bind.
+     * @param label2 sets the actual state running of the server. If is true, means the server is running. If is false, you'll need to restart the server application
+     */
+    public receiver(JLabel label,JLabel label2){
         this.etiqueta=label;
+        this.etiEstado=label2;
     }
     
     /**
@@ -51,7 +58,6 @@ public class receiver implements Runnable{
             etiqueta.setText(mensaje);
             while(true){
                 s=ss.accept();
-                estado=s.isConnected();
                 puerto=s.getPort();
                 is=s.getInputStream();
                 os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/test"+(int)(Math.random()*10000)+".txt");
@@ -67,7 +73,7 @@ public class receiver implements Runnable{
     /**
      * Close the server.
      */
-    public synchronized void closeServer(){
+    public void closeServer(){
         try{
             ss.close();
             /*s.close();
@@ -83,20 +89,22 @@ public class receiver implements Runnable{
     }
     
     /**
+     * Set on a label actual state running of the server.
+     */
+    public void state(){
+        if(ss.isClosed()==true){
+            etiEstado.setText(String.valueOf(ss.isClosed()));
+        }else if(ss.isClosed()==false){
+            etiEstado.setText(String.valueOf(ss.isClosed()));
+        }
+    }
+    
+    /**
      * Gets port where can connect it.
      * 
      * @return used port
      */
     public int getPort(){
         return puerto;
-    }
-    
-    /**
-     * Gets actual state of the server if is connected or not.
-     * 
-     * @return status if is connected
-     */
-    public boolean getStatus(){
-        return estado;
     }
 }

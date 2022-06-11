@@ -10,6 +10,8 @@ public class serverSender extends javax.swing.JPanel{
         initComponents();
         
         botones();
+        
+        setSize(430,315);
     }
     
     protected final void botones(){

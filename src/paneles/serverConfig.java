@@ -14,6 +14,8 @@ public class serverConfig extends javax.swing.JPanel{
         
         botones();
         configIn();
+        
+        setSize(430,315);
     }
     
     protected Properties p;

@@ -12,8 +12,10 @@ public class sendFiles extends javax.swing.JFrame{
     public sendFiles(){
         initComponents();
         
-        setResizable(false);
         botones();
+        
+        setResizable(false);
+        setSize(435,345);
     }
     
     protected final void botones(){
@@ -24,19 +26,19 @@ public class sendFiles extends javax.swing.JFrame{
         miConfigServer.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverConfig(),BorderLayout.CENTER);
-            pack();
+            this.pack();
         });
         
         miServer.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverPanel(),BorderLayout.CENTER);
-            pack();
+            this.pack();
         });
         
         miSendData.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
             this.getContentPane().add(new serverSender(),BorderLayout.CENTER);
-            pack();
+            this.pack();
         });
         
         miAddress.addActionListener((a)->{
