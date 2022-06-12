@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  * 
  * @author erick
  */
-public class receiver extends Thread implements Runnable{
+public class receiver implements Runnable{
     protected static Properties p;
     protected static ServerSocket ss;
     
@@ -30,8 +31,9 @@ public class receiver extends Thread implements Runnable{
         }
     }
     
-    protected Socket s;
     protected int puerto;
+    
+    protected Socket s;
     protected JLabel etiqueta;
     protected JLabel etiEstado;
     protected InputStream is;
@@ -54,14 +56,15 @@ public class receiver extends Thread implements Runnable{
     @Override
     public void run(){
         try{
-            String mensaje="El puerto "+ss.getLocalPort()+" está activo";
-            etiqueta.setText(mensaje);
+            etiqueta.setText("El puerto "+ss.getLocalPort()+" está activo");
             while(true){
                 s=ss.accept();
-                puerto=s.getPort();
                 is=s.getInputStream();
-                os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/test"+(int)(Math.random()*10000)+".txt");
-                new serverThread(is,os).run();
+                DataInputStream dis=new DataInputStream(is);
+                String filename=dis.readUTF();
+                os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/"+filename);
+                long size=dis.readLong();
+                new serverThread(is,os,size).run();
             }
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
@@ -76,10 +79,6 @@ public class receiver extends Thread implements Runnable{
     public void closeServer(){
         try{
             ss.close();
-            /*s.close();
-            os.flush();
-            is.close();
-            os.close();*/
             etiqueta.setText("Se apagó el servidor");
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
@@ -91,20 +90,11 @@ public class receiver extends Thread implements Runnable{
     /**
      * Set on a label actual state running of the server.
      */
-    public void state(){
+    public void getState(){
         if(ss.isClosed()==true){
             etiEstado.setText(String.valueOf(ss.isClosed()));
         }else if(ss.isClosed()==false){
             etiEstado.setText(String.valueOf(ss.isClosed()));
         }
-    }
-    
-    /**
-     * Gets port where can connect it.
-     * 
-     * @return used port
-     */
-    public int getPort(){
-        return puerto;
     }
 }

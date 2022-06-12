@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public class serverThread extends Thread{
     protected InputStream is;
     protected OutputStream os;
+    protected long size;
     
     /**
      * Initialize instance to write the was sent data to the server.
@@ -20,9 +21,10 @@ public class serverThread extends Thread{
      * @param is Input stream to read.
      * @param os Output stream to write.
      */
-    public serverThread(InputStream is,OutputStream os){
+    public serverThread(InputStream is,OutputStream os,long size){
         this.is=is;
         this.os=os;
+        this.size=size;
     }
     
     /**
@@ -34,8 +36,9 @@ public class serverThread extends Thread{
         byte[] buffer;
         try{
             buffer=new byte[2048];
-            while((leido=is.read(buffer))>0){
+            while(size>0&&(leido=is.read(buffer,0,(int)Math.min(buffer.length,size)))!=-1){
                 os.write(buffer,0,leido);
+                size-=leido;
             }
             
             is.close();

@@ -43,7 +43,7 @@ public class serverSender extends javax.swing.JPanel{
         chooserButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
 
-        jLabel1.setText("Dirección");
+        jLabel1.setText("Dirección:");
 
         sendButton.setText("Enviar");
 
