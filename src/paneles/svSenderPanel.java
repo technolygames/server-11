@@ -1,23 +1,24 @@
 package paneles;
 
 import clases.sender;
+import clases.userClasses.serverPanelAppearance;
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import ventanas.mainFrame;
 
-public class serverSender extends javax.swing.JPanel{
-    public serverSender(){
+public class svSenderPanel extends javax.swing.JPanel{
+    public svSenderPanel(){
         initComponents();
         
+        new serverPanelAppearance(System.getProperty("user.dir")+"/src/data/config/config.properties").LookAndFeel(this);
         botones();
         
-        setSize(430,315);
+        setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
     }
     
     protected final void botones(){
         chooserButton.addActionListener((a)->{
             JFileChooser fileChooser=new JFileChooser();
-            fileChooser.setFileFilter(new FileNameExtensionFilter("Archivo de texto","txt"));
             if(JFileChooser.APPROVE_OPTION==fileChooser.showOpenDialog(null)){
                 File f=fileChooser.getSelectedFile();
                 jTextField1.setText(f.getAbsolutePath());
@@ -68,7 +69,7 @@ public class serverSender extends javax.swing.JPanel{
                         .addComponent(sendButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(closeButton)
-                        .addGap(0, 213, Short.MAX_VALUE)))
+                        .addGap(0, 215, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -79,7 +80,7 @@ public class serverSender extends javax.swing.JPanel{
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(chooserButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendButton)
                     .addComponent(closeButton))

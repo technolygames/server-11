@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * 
  * @author erick
  */
-public class serverThread extends Thread{
+public class serverThread implements Runnable{
     protected InputStream is;
     protected OutputStream os;
     protected long size;
@@ -20,6 +20,7 @@ public class serverThread extends Thread{
      * 
      * @param is Input stream to read.
      * @param os Output stream to write.
+     * @param size Size of the file.
      */
     public serverThread(InputStream is,OutputStream os,long size){
         this.is=is;

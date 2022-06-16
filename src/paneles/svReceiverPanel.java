@@ -1,14 +1,17 @@
 package paneles;
 
 import clases.receiver;
+import clases.userClasses.serverPanelAppearance;
+import ventanas.mainFrame;
 
-public class serverPanel extends javax.swing.JPanel{
-    public serverPanel(){
+public class svReceiverPanel extends javax.swing.JPanel{
+    public svReceiverPanel(){
         initComponents();
         
+        new serverPanelAppearance(System.getProperty("user.dir")+"/src/data/config/config.properties").LookAndFeel(this);
         botones();
         
-        setSize(430,315);
+        setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
     }
     
     protected final void botones(){

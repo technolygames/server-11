@@ -41,6 +41,9 @@ public class sender{
             dos.writeLong(flujo.length);
             dos.write(flujo,0,flujo.length);
             new Thread(new clientThread(is,os)).start();
+            
+            os.flush();
+            dos.flush();
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
         }

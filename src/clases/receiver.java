@@ -65,6 +65,8 @@ public class receiver implements Runnable{
                 os=new FileOutputStream(System.getProperty("user.dir")+"/src/data/receivedData/"+filename);
                 long size=dis.readLong();
                 new serverThread(is,os,size).run();
+                
+                os.flush();
             }
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());

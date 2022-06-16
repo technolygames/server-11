@@ -1,21 +1,23 @@
 package ventanas;
 
+import clases.userClasses.serverPanelAppearance;
 import java.awt.BorderLayout;
 import java.io.IOException;
 import java.net.InetAddress;
 import javax.swing.JOptionPane;
-import paneles.serverConfig;
-import paneles.serverPanel;
-import paneles.serverSender;
+import paneles.svConfigPanel;
+import paneles.svReceiverPanel;
+import paneles.svSenderPanel;
 
-public class sendFiles extends javax.swing.JFrame{
-    public sendFiles(){
+public class mainFrame extends javax.swing.JFrame{
+    public mainFrame(){
         initComponents();
         
+        new serverPanelAppearance(System.getProperty("user.dir")+"/src/data/config/config.properties").LookAndFeel(this);
         botones();
         
-        setResizable(false);
         setSize(435,345);
+        pack();
     }
     
     protected final void botones(){
@@ -25,19 +27,19 @@ public class sendFiles extends javax.swing.JFrame{
         
         miConfigServer.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
-            this.getContentPane().add(new serverConfig(),BorderLayout.CENTER);
+            this.getContentPane().add(new svConfigPanel(),BorderLayout.CENTER);
             this.pack();
         });
         
         miServer.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
-            this.getContentPane().add(new serverPanel(),BorderLayout.CENTER);
+            this.getContentPane().add(new svReceiverPanel(),BorderLayout.CENTER);
             this.pack();
         });
         
         miSendData.addActionListener((a)->{
             this.getContentPane().setLayout(new BorderLayout());
-            this.getContentPane().add(new serverSender(),BorderLayout.CENTER);
+            this.getContentPane().add(new svSenderPanel(),BorderLayout.CENTER);
             this.pack();
         });
         
@@ -94,7 +96,7 @@ public class sendFiles extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
+                .addContainerGap(276, Short.MAX_VALUE)
                 .addComponent(closeButton)
                 .addContainerGap())
         );
@@ -110,7 +112,7 @@ public class sendFiles extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
     
     public static void main(String args[]){
-        new sendFiles().setVisible(true);
+        new mainFrame().setVisible(true);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

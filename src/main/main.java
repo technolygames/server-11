@@ -1,9 +1,9 @@
 package main;
 
-import ventanas.sendFiles;
+import ventanas.mainFrame;
 
 public class main{
     public static void main(String[] args){
-        new sendFiles().setVisible(true);
+        new mainFrame().setVisible(true);
     }
 }
