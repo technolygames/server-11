@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import javax.swing.JOptionPane;
 
 /**
- * Thread made to write files which server has received.
+ * Thread class made to write files which the server has received from a client.
  * 
  * @author erick
  */
@@ -16,7 +16,7 @@ public class serverThread implements Runnable{
     protected long size;
     
     /**
-     * Initialize instance to write the was sent data to the server.
+     * Initialize instance to write the file was sent data to the server.
      * 
      * @param is Input stream to read.
      * @param os Output stream to write.
@@ -29,7 +29,7 @@ public class serverThread implements Runnable{
     }
     
     /**
-     * Thread to convert the byte array to a readable file.
+     * Thread to convert byte array to a readable file.
      */
     @Override
     public void run(){

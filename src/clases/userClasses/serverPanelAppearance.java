@@ -11,7 +11,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
- * Class dedicated to the frame and panel appearance.
+ * Class made to set frame and panel appearance.
+ * Gets selected look and feel from config file.
  * 
  * @author erick
  */
@@ -19,10 +20,21 @@ public class serverPanelAppearance{
     protected Properties p;
     protected String direccion;
     
+    /**
+     * Initialize instance to get the config file and load look and feel.
+     * 
+     * @param dir Direction where the config file is located or will be located.
+     */
     public serverPanelAppearance(String dir){
         this.direccion=dir;
     }
     
+    /**
+     * Method made to display the selected look and feel previously chosed inf the config panel.
+     * It can be null because it's used by GUI containers.
+     * 
+     * @param comp Component which will be load or display the look and feel. It can be set panel, frame or window container.
+     */
     public void LookAndFeel(Component comp){
         p=new Properties();
         try{

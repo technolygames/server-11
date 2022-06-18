@@ -2,6 +2,7 @@ package clases;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,49 +14,42 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
- * Receive data from an application and stores it on server PC.
+ * Claas made to receive data from client application and stores it on server PC.
  * 
  * @author erick
  */
 public class receiver implements Runnable{
-    protected static Properties p;
-    protected static ServerSocket ss;
+    protected JLabel etiqueta;
+    protected String direccion;
     
-    static{
-        try{
-            p=new Properties();
-            p.load(new FileInputStream(System.getProperty("user.dir")+"/src/data/config/config.properties"));
-            ss=new ServerSocket(Integer.parseInt(p.getProperty("port")));
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
-        }
+    /**
+     * Initialize instance to receive the data sent from client app and convert it to a readable file.
+     * 
+     * @param label sets a message with the port number to bind.
+     * @param dir get the config file where is the port to be use.
+     */
+    public receiver(JLabel label,String dir){
+        this.etiqueta=label;
+        this.direccion=dir;
     }
+    
+    protected Socket s;
+    protected InputStream is;
+    protected OutputStream os;
+    protected Properties p;
+    protected ServerSocket ss;
     
     protected int puerto;
     
-    protected Socket s;
-    protected JLabel etiqueta;
-    protected JLabel etiEstado;
-    protected InputStream is;
-    protected OutputStream os;
-    
     /**
-     * This class gets file sent from a client with the specified port and IP address of the server machine.
-     * 
-     * @param label sets a message with the port number to bind.
-     * @param label2 sets the actual state running of the server. If is true, means the server is running. If is false, you'll need to restart the server application
-     */
-    public receiver(JLabel label,JLabel label2){
-        this.etiqueta=label;
-        this.etiEstado=label2;
-    }
-    
-    /**
-     * Receive data from a client and store it on server PC.
+     * Receive data from the client and stores it on server PC.
      */
     @Override
     public void run(){
         try{
+            p=new Properties();
+            p.load(new FileInputStream(direccion));
+            ss=new ServerSocket(Integer.parseInt(p.getProperty("port")));
             etiqueta.setText("El puerto "+ss.getLocalPort()+" está activo");
             while(true){
                 s=ss.accept();
@@ -68,35 +62,12 @@ public class receiver implements Runnable{
                 
                 os.flush();
             }
-        }catch(IOException e){
+        }catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+        }catch(IOException x){
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
         }catch(NullPointerException x){
             JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
-        }
-    }
-    
-    /**
-     * Close the server.
-     */
-    public void closeServer(){
-        try{
-            ss.close();
-            etiqueta.setText("Se apagó el servidor");
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
-        }catch(NullPointerException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
-        }
-    }
-    
-    /**
-     * Set on a label actual state running of the server.
-     */
-    public void getState(){
-        if(ss.isClosed()==true){
-            etiEstado.setText(String.valueOf(ss.isClosed()));
-        }else if(ss.isClosed()==false){
-            etiEstado.setText(String.valueOf(ss.isClosed()));
         }
     }
 }

@@ -21,13 +21,9 @@ public class svReceiverPanel extends javax.swing.JPanel{
         
         cbStatusServer.addActionListener((a)->{
             if(cbStatusServer.isSelected()==true){
-                new Thread(new receiver(jLabel1,jLabel2)).start();
-                new receiver(jLabel1,jLabel2).getState();
-            }else if(cbStatusServer.isSelected()==false){
-                new receiver(jLabel1,jLabel2).closeServer();
-                new receiver(jLabel1,jLabel2).getState();
+                new Thread(new receiver(jLabel1,System.getProperty("user.dir")+"/src/data/config/config.properties")).start();
                 cbStatusServer.setEnabled(false);
-                jLabel3.setText("Reinicia la aplicación");
+                closeButton.setEnabled(false);
             }
         });
     }
@@ -39,7 +35,6 @@ public class svReceiverPanel extends javax.swing.JPanel{
         closeButton = new javax.swing.JButton();
         cbStatusServer = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         closeButton.setText("Cerrar panel");
@@ -48,9 +43,7 @@ public class svReceiverPanel extends javax.swing.JPanel{
 
         jLabel1.setText("jLabel1");
 
-        jLabel2.setText("jLabel2");
-
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Para reiniciar, cierra el programa.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,20 +57,15 @@ public class svReceiverPanel extends javax.swing.JPanel{
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(closeButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbStatusServer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 217, Short.MAX_VALUE)))
+                            .addComponent(cbStatusServer))
+                        .addGap(0, 293, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbStatusServer)
-                    .addComponent(jLabel2))
+                .addComponent(cbStatusServer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
@@ -91,7 +79,6 @@ public class svReceiverPanel extends javax.swing.JPanel{
     private javax.swing.JCheckBox cbStatusServer;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

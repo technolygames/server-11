@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import javax.swing.JOptionPane;
 
 /**
- * Thread made to read files which sends to a server.
+ * Thread class made to read files which sends to a server.
  * 
  * @author erick
  */

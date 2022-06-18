@@ -13,21 +13,32 @@ import java.util.Properties;
 import javax.swing.JOptionPane;
 
 /**
- * Sends files between a device to a server.
+ * Send files between a device client to a device server.
  * 
  * @author erick
  */
 public class sender{
+    protected String direccion;
+    
+    /**
+     * Initialize instance to send a file to the server.
+     * 
+     * @param dir Config file where is located.
+     */
+    public sender(String dir){
+        this.direccion=dir;
+    }
     
     /**
      * Send a specified file to a server using internet through an specified port and ip address.
+     * it is possible to send a filename and entire file without failures.
      * 
      * @param dir File to send to the server.
      */
     public void sendFiles(String dir){
         try{
             Properties p=new Properties();
-            p.load(new FileInputStream(System.getProperty("user.dir")+"/src/data/config/config.properties"));
+            p.load(new FileInputStream(direccion));
             Socket s=new Socket(p.getProperty("ip"),Integer.parseInt(p.getProperty("port")));
             File f=new File(dir);
             byte[] flujo=new byte[(int)f.length()];

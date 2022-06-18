@@ -45,7 +45,7 @@ public class svConfigPanel extends javax.swing.JPanel{
         });
         
         storeButton.addActionListener((a)->{
-            new serverConfig(System.getProperty("user.dir")+"/src/data/config/config.properties").configOut(jTextField1, jTextField2,jComboBox1);
+            new serverConfig(System.getProperty("user.dir")+"/src/data/config/config.properties").configOut(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
         });
     }
     

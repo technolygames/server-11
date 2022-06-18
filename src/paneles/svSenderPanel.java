@@ -30,7 +30,7 @@ public class svSenderPanel extends javax.swing.JPanel{
         });
         
         sendButton.addActionListener((a)->{
-            new sender().sendFiles(jTextField1.getText());
+            new sender(System.getProperty("user.dir")+"/src/data/config/config.properties").sendFiles(jTextField1.getText());
         });
     }
     
