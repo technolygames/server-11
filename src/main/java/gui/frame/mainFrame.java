@@ -14,7 +14,7 @@ public class mainFrame extends javax.swing.JFrame{
     public mainFrame(){
         initComponents();
         
-        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/java/classes/userClasses/config/config.properties").LookAndFeel(this);
+        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").LookAndFeel(this);
         botones();
         
         setSize(435,345);
@@ -97,7 +97,7 @@ public class mainFrame extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
+                .addContainerGap(276, Short.MAX_VALUE)
                 .addComponent(closeButton)
                 .addContainerGap())
         );

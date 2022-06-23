@@ -8,11 +8,9 @@ package classes;
 import classes.threads.serverThread;
 import java.io.DataInputStream;
 import java.io.EOFException;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -38,7 +36,7 @@ public class receiver implements Runnable{
     {
         try{
             p=new Properties();
-            p.load(new FileInputStream(getClass().getResource("classes/userClasses/config/config.properties").getFile()));
+            p.load(new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/config/config.properties"));
             ss=new ServerSocket(Integer.parseInt(p.getProperty("port")));
         }catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
@@ -71,7 +69,7 @@ public class receiver implements Runnable{
                 InputStream is=s.getInputStream();
                 DataInputStream dis=new DataInputStream(is);
                 String filename=dis.readUTF();
-                OutputStream os=new FileOutputStream(System.getProperty("user.dir")+"/src/main/java/classes/userClasses/receivedData/"+filename);
+                OutputStream os=new FileOutputStream(System.getProperty("user.dir")+"/src/main/resources/receivedData/"+filename);
                 long size=dis.readLong();
                 new serverThread(is,os,size).run();
                 

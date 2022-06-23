@@ -15,8 +15,8 @@ public class svConfigPanel extends javax.swing.JPanel{
         
         botones();
         combo();
-        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/java/classes/userClasses/config/config.properties").LookAndFeel(this);
-        new serverConfig(System.getProperty("user.dir")+"/src/main/java/classes/userClasses/config/config.properties").configIn(jTextField1,jTextField2,jComboBox1);
+        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").LookAndFeel(this);
+        new serverConfig(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").configIn(jTextField1,jTextField2,jComboBox1);
         
         setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
     }
@@ -45,7 +45,7 @@ public class svConfigPanel extends javax.swing.JPanel{
         });
         
         storeButton.addActionListener((a)->{
-            new serverConfig(System.getProperty("user.dir")+"/src/main/java/classes/userClasses/config/config.properties").configOut(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
+            new serverConfig(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").configOut(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
         });
     }
     
@@ -80,7 +80,7 @@ public class svConfigPanel extends javax.swing.JPanel{
 
         storeButton.setText("Guardar");
 
-        closeButton.setText("jButton1");
+        closeButton.setText("Cerrar panel");
 
         jLabel1.setText("Puerto:");
 
@@ -111,7 +111,7 @@ public class svConfigPanel extends javax.swing.JPanel{
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +128,7 @@ public class svConfigPanel extends javax.swing.JPanel{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(storeButton)
                     .addComponent(closeButton))

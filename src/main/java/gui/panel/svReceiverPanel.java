@@ -8,7 +8,7 @@ public class svReceiverPanel extends javax.swing.JPanel{
     public svReceiverPanel(){
         initComponents();
         
-        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/java/classes/userClasses/config/config.properties").LookAndFeel(this);
+        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").LookAndFeel(this);
         botones();
         
         setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
@@ -68,7 +68,7 @@ public class svReceiverPanel extends javax.swing.JPanel{
                                 .addComponent(jLabel2))
                             .addComponent(closeButton)
                             .addComponent(jLabel3))
-                        .addGap(0, 215, Short.MAX_VALUE)))
+                        .addGap(0, 214, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -80,7 +80,7 @@ public class svReceiverPanel extends javax.swing.JPanel{
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(closeButton)

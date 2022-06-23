@@ -10,7 +10,7 @@ public class svSenderPanel extends javax.swing.JPanel{
     public svSenderPanel(){
         initComponents();
         
-        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/java/classes/userClasses/config/config.properties").LookAndFeel(this);
+        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").LookAndFeel(this);
         botones();
         
         setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
@@ -46,7 +46,7 @@ public class svSenderPanel extends javax.swing.JPanel{
 
         jLabel1.setText("Dirección:");
 
-        chooserButton.setText("jButton1");
+        chooserButton.setText("Seleccionar");
 
         sendButton.setText("Enviar");
 
@@ -62,7 +62,7 @@ public class svSenderPanel extends javax.swing.JPanel{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chooserButton))
                     .addGroup(layout.createSequentialGroup()
@@ -80,7 +80,7 @@ public class svSenderPanel extends javax.swing.JPanel{
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chooserButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendButton)
                     .addComponent(closeButton))
