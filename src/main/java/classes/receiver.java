@@ -17,7 +17,6 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -29,7 +28,6 @@ import javax.swing.JOptionPane;
 public class receiver implements Runnable{
     protected JLabel etiqueta;
     protected JLabel etiEstado;
-    protected JCheckBox caja;
     protected Properties p;
     protected ServerSocket ss;
     
@@ -49,12 +47,11 @@ public class receiver implements Runnable{
      * Initialize instance to receive the data sent from client app and convert it to a readable file.
      * 
      * @param label sets a message with the port number to bind.
-     * @param label2 sets the actual state running of the server. If is true, means the server is running. If is false, you'll need to restart the server application
+     * @param label2 sets the actual state running of the server. If is true, means the server is running. If is false, you'll need to restart the server application.
      */
-    public receiver(JLabel label,JLabel label2,JCheckBox checkBox){
+    public receiver(JLabel label,JLabel label2){
         this.etiqueta=label;
         this.etiEstado=label2;
-        this.caja=checkBox;
     }
     
     /**
@@ -79,22 +76,18 @@ public class receiver implements Runnable{
             JOptionPane.showMessageDialog(null,"Error:\n"+k.getMessage()+"\nCausado por:\n"+k.getCause());
             k.printStackTrace();
             System.out.println(k.getCause());
-            closeServer();
         }catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
             e.printStackTrace();
             System.out.println(e.getCause());
-            closeServer();
         }catch(IOException x){
             JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
             x.printStackTrace();
             System.out.println(x.getCause());
-            closeServer();
         }catch(NullPointerException f){
             JOptionPane.showMessageDialog(null,"Error:\n"+f.getMessage()+"\nCausado por:\n"+f.getCause());
             f.printStackTrace();
             System.out.println(f.getCause());
-            closeServer();
         }
     }
     
@@ -104,8 +97,6 @@ public class receiver implements Runnable{
     public void closeServer(){
         try{
             ss.close();
-            caja.setEnabled(false);
-            caja.setSelected(false);
             etiqueta.setText("Se apagó el servidor");
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());

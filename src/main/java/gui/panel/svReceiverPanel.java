@@ -21,11 +21,11 @@ public class svReceiverPanel extends javax.swing.JPanel{
         
         cbStatusServer.addActionListener((a)->{
             if(cbStatusServer.isSelected()==true){
-                new Thread(new receiver(jLabel1,jLabel2,cbStatusServer)).start();
-                new receiver(jLabel1,jLabel2,cbStatusServer).getState();
+                new Thread(new receiver(jLabel1,jLabel2)).start();
+                new receiver(jLabel1,jLabel2).getState();
             }else if(cbStatusServer.isSelected()==false){
-                new receiver(jLabel1,jLabel2,cbStatusServer).closeServer();
-                new receiver(jLabel1,jLabel2,cbStatusServer).getState();
+                new receiver(jLabel1,jLabel2).closeServer();
+                new receiver(jLabel1,jLabel2).getState();
                 cbStatusServer.setEnabled(false);
                 closeButton.setEnabled(false);
             }
