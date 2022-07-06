@@ -3,6 +3,7 @@ package gui.panel;
 import classes.userClasses.serverConfig;
 import classes.userClasses.serverGUIAppearance;
 import gui.frame.mainFrame;
+import java.awt.Frame;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -10,13 +11,15 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class svConfigPanel extends javax.swing.JPanel{
+    protected String userdir=System.getProperty("user.dir");
     public svConfigPanel(){
         initComponents();
         
         botones();
         combo();
-        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").LookAndFeel(this);
-        new serverConfig(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").configIn(jTextField1,jTextField2,jComboBox1);
+        
+        new serverGUIAppearance(userdir+"/data/config/config.properties").LookAndFeel(this);
+        new serverConfig(userdir+"/data/config/config.properties").configIn(jTextField1,jTextField2,jComboBox1);
         
         setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
     }
@@ -32,7 +35,10 @@ public class svConfigPanel extends javax.swing.JPanel{
             try{
                 String design=jComboBox1.getSelectedItem().toString();
                 UIManager.setLookAndFeel(design);
-                SwingUtilities.updateComponentTreeUI(this);
+                for(Frame frame:Frame.getFrames()){
+                    SwingUtilities.updateComponentTreeUI(frame);
+                    frame.pack();
+                }
             }catch(ClassNotFoundException e){
                 JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
             }catch(IllegalAccessException x){
@@ -45,15 +51,14 @@ public class svConfigPanel extends javax.swing.JPanel{
         });
         
         storeButton.addActionListener((a)->{
-            new serverConfig(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").configOut(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
+            new serverConfig(userdir+"/data/config/config.properties").configOut(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
         });
     }
     
     protected final void combo(){
         UIManager.installLookAndFeel("FlatLafDark","com.formdev.flatlaf.FlatDarkLaf");
-        UIManager.LookAndFeelInfo[] lafi=UIManager.getInstalledLookAndFeels();
         try{
-            for(UIManager.LookAndFeelInfo lafi1:lafi){
+            for(UIManager.LookAndFeelInfo lafi1:UIManager.getInstalledLookAndFeels()){
                 jComboBox1.addItem(lafi1.getClassName());
             }
         }catch(NumberFormatException e){

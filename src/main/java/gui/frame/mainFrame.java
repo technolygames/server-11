@@ -14,7 +14,7 @@ public class mainFrame extends javax.swing.JFrame{
     public mainFrame(){
         initComponents();
         
-        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").LookAndFeel(this);
+        new serverGUIAppearance(System.getProperty("user.dir")+"/data/config/config.properties").LookAndFeel(this);
         botones();
         
         setSize(435,345);

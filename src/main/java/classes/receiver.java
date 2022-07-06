@@ -30,11 +30,12 @@ public class receiver implements Runnable{
     protected JLabel etiEstado;
     protected Properties p;
     protected ServerSocket ss;
+    protected String userdir=System.getProperty("user.dir");
     
     {
         try{
             p=new Properties();
-            p.load(new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/config/config.properties"));
+            p.load(new FileInputStream(userdir+"/data/config/config.properties"));
             ss=new ServerSocket(Integer.parseInt(p.getProperty("port")));
         }catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
@@ -66,7 +67,7 @@ public class receiver implements Runnable{
                 InputStream is=s.getInputStream();
                 DataInputStream dis=new DataInputStream(is);
                 String filename=dis.readUTF();
-                OutputStream os=new FileOutputStream(System.getProperty("user.dir")+"/src/main/resources/receivedData/"+filename);
+                OutputStream os=new FileOutputStream(userdir+"/data/receivedData/"+filename);
                 long size=dis.readLong();
                 new serverThread(is,os,size).run();
                 

@@ -7,10 +7,11 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 public class svSenderPanel extends javax.swing.JPanel{
+    protected String userdir=System.getProperty("user.dir");
     public svSenderPanel(){
         initComponents();
         
-        new serverGUIAppearance(System.getProperty("user.dir")+"/src/main/resources/config/config.properties").LookAndFeel(this);
+        new serverGUIAppearance(userdir+"/data/config/config.properties").LookAndFeel(this);
         botones();
         
         setSize(new mainFrame().getWidth(),new mainFrame().getHeight());

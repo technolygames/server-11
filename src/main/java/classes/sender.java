@@ -33,7 +33,7 @@ public class sender{
     public void sendFiles(String dir){
         try{
             Properties p=new Properties();
-            p.load(new FileInputStream(System.getProperty("user.dir")+"/src/main/resources/config/config.properties"));
+            p.load(new FileInputStream(System.getProperty("user.dir")+"/data/config/config.properties"));
             Socket s=new Socket(p.getProperty("ip"),Integer.parseInt(p.getProperty("port")));
             File f=new File(dir);
             byte[] flujo=new byte[(int)f.length()];
