@@ -1,8 +1,6 @@
 package gui.panel;
 
 import classes.userClasses.serverConfig;
-import classes.userClasses.serverGUIAppearance;
-import gui.frame.mainFrame;
 import java.awt.Frame;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -15,13 +13,10 @@ public class svConfigPanel extends javax.swing.JPanel{
     public svConfigPanel(){
         initComponents();
         
-        botones();
-        combo();
-        
-        new serverGUIAppearance(userdir+"/data/config/config.properties").LookAndFeel(this);
         new serverConfig(userdir+"/data/config/config.properties").configIn(jTextField1,jTextField2,jComboBox1);
         
-        setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
+        botones();
+        combo();
     }
     
     protected Properties p;

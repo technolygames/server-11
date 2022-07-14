@@ -1,18 +1,13 @@
 package gui.panel;
 
 import classes.receiver;
-import classes.userClasses.serverGUIAppearance;
-import gui.frame.mainFrame;
 
 public class svReceiverPanel extends javax.swing.JPanel{
     protected String userdir=System.getProperty("user.dir");
     public svReceiverPanel(){
         initComponents();
         
-        new serverGUIAppearance(userdir+"/data/config/config.properties").LookAndFeel(this);
         botones();
-        
-        setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
     }
     
     protected final void botones(){

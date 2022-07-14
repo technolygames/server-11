@@ -112,10 +112,6 @@ public class mainFrame extends javax.swing.JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public static void main(String args[]){
-        new mainFrame().setVisible(true);
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
     private javax.swing.JMenu jMenu1;

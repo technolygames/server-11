@@ -1,8 +1,6 @@
 package gui.panel;
 
 import classes.sender;
-import classes.userClasses.serverGUIAppearance;
-import gui.frame.mainFrame;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -11,10 +9,7 @@ public class svSenderPanel extends javax.swing.JPanel{
     public svSenderPanel(){
         initComponents();
         
-        new serverGUIAppearance(userdir+"/data/config/config.properties").LookAndFeel(this);
         botones();
-        
-        setSize(new mainFrame().getWidth(),new mainFrame().getHeight());
     }
     
     protected final void botones(){
