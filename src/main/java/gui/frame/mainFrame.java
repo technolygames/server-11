@@ -1,5 +1,6 @@
 package gui.frame;
 
+import classes.dirs;
 import classes.userClasses.serverGUIAppearance;
 import gui.panel.svConfigPanel;
 import gui.panel.svReceiverPanel;
@@ -13,8 +14,8 @@ import javax.swing.JOptionPane;
 public class mainFrame extends javax.swing.JFrame{
     public mainFrame(){
         initComponents();
+        new serverGUIAppearance(dirs.userdir+"/data/config/config.properties").LookAndFeel(this);
         
-        new serverGUIAppearance(System.getProperty("user.dir")+"/data/config/config.properties").LookAndFeel(this);
         botones();
         
         setSize(435,345);

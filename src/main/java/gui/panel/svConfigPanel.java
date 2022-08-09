@@ -1,5 +1,6 @@
 package gui.panel;
 
+import classes.dirs;
 import classes.userClasses.serverConfig;
 import java.awt.Frame;
 import java.util.Properties;
@@ -9,7 +10,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class svConfigPanel extends javax.swing.JPanel{
-    protected String userdir=System.getProperty("user.dir");
+    protected String userdir=dirs.userdir;
     public svConfigPanel(){
         initComponents();
         
@@ -50,8 +51,11 @@ public class svConfigPanel extends javax.swing.JPanel{
         });
     }
     
-    protected final void combo(){
+    static{
         UIManager.installLookAndFeel("FlatLafDark","com.formdev.flatlaf.FlatDarkLaf");
+    }
+    
+    protected final void combo(){
         try{
             for(UIManager.LookAndFeelInfo lafi1:UIManager.getInstalledLookAndFeels()){
                 jComboBox1.addItem(lafi1.getClassName());

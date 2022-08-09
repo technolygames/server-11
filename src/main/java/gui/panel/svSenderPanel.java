@@ -1,11 +1,12 @@
 package gui.panel;
 
+import classes.dirs;
 import classes.sender;
 import java.io.File;
 import javax.swing.JFileChooser;
 
 public class svSenderPanel extends javax.swing.JPanel{
-    protected String userdir=System.getProperty("user.dir");
+    protected String userdir=dirs.userdir;
     public svSenderPanel(){
         initComponents();
         

@@ -1,9 +1,10 @@
 package gui.panel;
 
+import classes.dirs;
 import classes.receiver;
 
 public class svReceiverPanel extends javax.swing.JPanel{
-    protected String userdir=System.getProperty("user.dir");
+    protected String userdir=dirs.userdir;
     public svReceiverPanel(){
         initComponents();
         

@@ -30,8 +30,7 @@ public class receiver implements Runnable{
     protected JLabel etiEstado;
     protected Properties p;
     protected ServerSocket ss;
-    protected String userdir=System.getProperty("user.dir");
-    
+    protected String userdir=dirs.userdir;
     {
         try{
             p=new Properties();

@@ -8,6 +8,7 @@ package classes.userClasses;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
@@ -46,6 +47,7 @@ public class serverConfig{
         try{
             p=new Properties();
             p.load(new FileInputStream(direccion));
+            
             textField1.setText(p.getProperty("port"));
             textField2.setText(p.getProperty("ip"));
             combobox.getModel().setSelectedItem(p.getProperty("laf"));
@@ -67,14 +69,15 @@ public class serverConfig{
      * @param laf look and feel if you use a GUI to use the server.
      */
     public void configOut(String port,String ipAddress,String laf){
-        p=new Properties();
         try{
+            p=new Properties();
             File f=new File(direccion);
             if(f.exists()==true){
                 p.setProperty("port",port);
                 p.setProperty("ip",ipAddress);
                 p.setProperty("laf",laf);
-                p.store(new FileWriter(direccion),"server_config");
+                
+                p.store(new FileOutputStream(direccion),"server_config");
             }else{
                 f.createNewFile();
             }
@@ -94,13 +97,14 @@ public class serverConfig{
      * @param ipAddress IP address which will use the client to bind to the server.
      */
     public void configOut(String port,String ipAddress){
-        p=new Properties();
         try{
+            p=new Properties();
             File f=new File(direccion);
             if(f.exists()==true){
                 p.setProperty("port",port);
                 p.setProperty("ip",ipAddress);
-                p.store(new FileWriter(direccion),"server_config");
+                
+                p.store(new FileOutputStream(direccion),"server_config");
             }else{
                 f.createNewFile();
             }
