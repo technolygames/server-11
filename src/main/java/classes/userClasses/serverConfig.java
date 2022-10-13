@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 import javax.swing.JComboBox;
@@ -52,11 +51,14 @@ public class serverConfig{
             textField2.setText(p.getProperty("ip"));
             combobox.getModel().setSelectedItem(p.getProperty("laf"));
         }catch(FileNotFoundException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage());
+            e.printStackTrace();
         }catch(IOException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage());
+            x.printStackTrace();
         }catch(NullPointerException n){
-            JOptionPane.showMessageDialog(null,"Error:\n"+n.getMessage()+"\nCausado por:\n"+n.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+n.getMessage());
+            n.printStackTrace();
         }
     }
     
@@ -72,7 +74,7 @@ public class serverConfig{
         try{
             p=new Properties();
             File f=new File(direccion);
-            if(f.exists()==true){
+            if(f.exists()){
                 p.setProperty("port",port);
                 p.setProperty("ip",ipAddress);
                 p.setProperty("laf",laf);
@@ -82,9 +84,11 @@ public class serverConfig{
                 f.createNewFile();
             }
         }catch(FileNotFoundException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage());
+            e.printStackTrace();
         }catch(IOException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage());
+            x.printStackTrace();
         }
     }
     
@@ -100,7 +104,7 @@ public class serverConfig{
         try{
             p=new Properties();
             File f=new File(direccion);
-            if(f.exists()==true){
+            if(f.exists()){
                 p.setProperty("port",port);
                 p.setProperty("ip",ipAddress);
                 
@@ -109,9 +113,11 @@ public class serverConfig{
                 f.createNewFile();
             }
         }catch(FileNotFoundException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage());
+            e.printStackTrace();
         }catch(IOException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage());
+            x.printStackTrace();
         }
     }
 }

@@ -1,10 +1,8 @@
 package gui.panel;
 
-import classes.dirs;
 import classes.receiver;
 
 public class svReceiverPanel extends javax.swing.JPanel{
-    protected String userdir=dirs.userdir;
     public svReceiverPanel(){
         initComponents();
         
@@ -17,14 +15,13 @@ public class svReceiverPanel extends javax.swing.JPanel{
         });
         
         cbStatusServer.addActionListener((a)->{
-            if(cbStatusServer.isSelected()==true){
-                new Thread(new receiver(jLabel1,jLabel2)).start();
-                new receiver(jLabel1,jLabel2).getState();
-            }else if(cbStatusServer.isSelected()==false){
-                new receiver(jLabel1,jLabel2).closeServer();
-                new receiver(jLabel1,jLabel2).getState();
-                cbStatusServer.setEnabled(false);
-                closeButton.setEnabled(false);
+            receiver r=new receiver(jLabel1);
+            if(cbStatusServer.isSelected()){
+                new Thread(()->{
+                    r.startServer();
+                }).start();
+            }else{
+                r.stopServer();
             }
         });
     }

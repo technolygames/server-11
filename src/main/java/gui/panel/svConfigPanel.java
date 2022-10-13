@@ -1,6 +1,5 @@
 package gui.panel;
 
-import classes.dirs;
 import classes.userClasses.serverConfig;
 import java.awt.Frame;
 import java.util.Properties;
@@ -10,11 +9,10 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class svConfigPanel extends javax.swing.JPanel{
-    protected String userdir=dirs.userdir;
     public svConfigPanel(){
         initComponents();
         
-        new serverConfig(userdir+"/data/config/config.properties").configIn(jTextField1,jTextField2,jComboBox1);
+        new serverConfig("data/config/config.properties").configIn(jTextField1,jTextField2,jComboBox1);
         
         botones();
         combo();
@@ -36,18 +34,22 @@ public class svConfigPanel extends javax.swing.JPanel{
                     frame.pack();
                 }
             }catch(ClassNotFoundException e){
-                JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+                JOptionPane.showMessageDialog(this,"Error:\n"+e.getMessage());
+                e.printStackTrace();
             }catch(IllegalAccessException x){
-                JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
+                JOptionPane.showMessageDialog(this,"Error:\n"+x.getMessage());
+                x.printStackTrace();
             }catch(InstantiationException n){
-                JOptionPane.showMessageDialog(null,"Error:\n"+n.getMessage()+"\nCausado por:\n"+n.getCause());
+                JOptionPane.showMessageDialog(this,"Error:\n"+n.getMessage());
+                n.printStackTrace();
             }catch(UnsupportedLookAndFeelException k){
-                JOptionPane.showMessageDialog(null,"Error:\n"+k.getMessage()+"\nCausado por:\n"+k.getCause());
+                JOptionPane.showMessageDialog(this,"Error:\n"+k.getMessage());
+                k.printStackTrace();
             }
         });
         
         storeButton.addActionListener((a)->{
-            new serverConfig(userdir+"/data/config/config.properties").configOut(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
+            new serverConfig("data/config/config.properties").configOut(jTextField1.getText(),jTextField2.getText(),jComboBox1.getSelectedItem().toString());
         });
     }
     
@@ -61,11 +63,14 @@ public class svConfigPanel extends javax.swing.JPanel{
                 jComboBox1.addItem(lafi1.getClassName());
             }
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(this,"Error:\n"+e.getMessage());
+            e.printStackTrace();
         }catch(IllegalArgumentException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
+            JOptionPane.showMessageDialog(this,"Error:\n"+x.getMessage());
+            x.printStackTrace();
         }catch(NullPointerException n){
-            JOptionPane.showMessageDialog(null,"Error:\n"+n.getMessage()+"\nCausado por:\n"+n.getCause());
+            JOptionPane.showMessageDialog(this,"Error:\n"+n.getMessage());
+            n.printStackTrace();
         }
     }
     

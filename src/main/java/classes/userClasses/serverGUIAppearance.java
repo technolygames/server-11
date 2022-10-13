@@ -47,19 +47,26 @@ public class serverGUIAppearance{
             UIManager.setLookAndFeel(p.getProperty("laf"));
             SwingUtilities.updateComponentTreeUI(comp);
         }catch(ClassNotFoundException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(comp,"Error:\n"+e.getMessage());
+            e.printStackTrace();
         }catch(InstantiationException x){
-            JOptionPane.showMessageDialog(null,"Error:\n"+x.getMessage()+"\nCausado por:\n"+x.getCause());
-        }catch(IllegalAccessException l){
-            JOptionPane.showMessageDialog(null,"Error:\n"+l.getMessage()+"\nCausado por:\n"+l.getCause());
-        }catch(UnsupportedLookAndFeelException z){
-            JOptionPane.showMessageDialog(null,"Error:\n"+z.getMessage()+"\nCausado por:\n"+z.getCause());
-        }catch(NullPointerException n){
-            JOptionPane.showMessageDialog(null,"Error:\n"+n.getMessage()+"\nCausado por:\n"+n.getCause());
-        }catch(FileNotFoundException v){
-            JOptionPane.showMessageDialog(null,"Error:\n"+v.getMessage()+"\nCausado por:\n"+v.getCause());
-        }catch(IOException o){
-            JOptionPane.showMessageDialog(null,"Error:\n"+o.getMessage()+"\nCausado por:\n"+o.getCause());
+            JOptionPane.showMessageDialog(comp,"Error:\n"+x.getMessage());
+            x.printStackTrace();
+        }catch(IllegalAccessException n){
+            JOptionPane.showMessageDialog(comp,"Error:\n"+n.getMessage());
+            n.printStackTrace();
+        }catch(UnsupportedLookAndFeelException k){
+            JOptionPane.showMessageDialog(comp,"Error:\n"+k.getMessage());
+            k.printStackTrace();
+        }catch(NullPointerException s){
+            JOptionPane.showMessageDialog(comp,"Error:\n"+s.getMessage());
+            s.printStackTrace();
+        }catch(FileNotFoundException j){
+            JOptionPane.showMessageDialog(comp,"Error:\n"+j.getMessage());
+            j.printStackTrace();
+        }catch(IOException y){
+            JOptionPane.showMessageDialog(comp,"Error:\n"+y.getMessage());
+            y.printStackTrace();
         }
     }
 }

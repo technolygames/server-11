@@ -46,7 +46,8 @@ public class clientThread implements Runnable{
             os.flush();
             os.close();
         }catch(IOException e){
-            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+            JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage());
+            e.printStackTrace();
         }
     }
 }

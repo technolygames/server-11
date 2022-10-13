@@ -1,12 +1,10 @@
 package gui.panel;
 
-import classes.dirs;
 import classes.sender;
 import java.io.File;
 import javax.swing.JFileChooser;
 
 public class svSenderPanel extends javax.swing.JPanel{
-    protected String userdir=dirs.userdir;
     public svSenderPanel(){
         initComponents();
         
@@ -16,6 +14,7 @@ public class svSenderPanel extends javax.swing.JPanel{
     protected final void botones(){
         chooserButton.addActionListener((a)->{
             JFileChooser fileChooser=new JFileChooser();
+            fileChooser.setMultiSelectionEnabled(false);
             if(JFileChooser.APPROVE_OPTION==fileChooser.showOpenDialog(null)){
                 File f=fileChooser.getSelectedFile();
                 jTextField1.setText(f.getAbsolutePath());

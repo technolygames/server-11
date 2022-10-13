@@ -1,12 +1,13 @@
 package gui.frame;
 
-import classes.dirs;
 import classes.userClasses.serverGUIAppearance;
 import gui.panel.svConfigPanel;
 import gui.panel.svReceiverPanel;
 import gui.panel.svSenderPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.EventQueue;
 import java.io.IOException;
 import java.net.InetAddress;
 import javax.swing.JOptionPane;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
 public class mainFrame extends javax.swing.JFrame{
     public mainFrame(){
         initComponents();
-        new serverGUIAppearance(dirs.userdir+"/data/config/config.properties").LookAndFeel(this);
+        new serverGUIAppearance("data/config/config.properties").LookAndFeel(this);
         
         botones();
         
@@ -28,29 +29,32 @@ public class mainFrame extends javax.swing.JFrame{
         });
         
         miConfigServer.addActionListener((a)->{
-            this.getContentPane().setLayout(new BorderLayout());
-            this.getContentPane().add(new svConfigPanel(),BorderLayout.CENTER);
-            this.pack();
+            openPanel(new svConfigPanel());
         });
         
         miServer.addActionListener((a)->{
-            this.getContentPane().setLayout(new BorderLayout());
-            this.getContentPane().add(new svReceiverPanel(),BorderLayout.CENTER);
-            this.pack();
+            openPanel(new svReceiverPanel());
         });
         
         miSendData.addActionListener((a)->{
-            this.getContentPane().setLayout(new BorderLayout());
-            this.getContentPane().add(new svSenderPanel(),BorderLayout.CENTER);
-            this.pack();
+            openPanel(new svSenderPanel());
         });
         
         miAddress.addActionListener((a)->{
             try{
-                JOptionPane.showMessageDialog(null,InetAddress.getLocalHost().getHostAddress());
+                JOptionPane.showMessageDialog(this,InetAddress.getLocalHost().getHostAddress());
             }catch(IOException e){
-                JOptionPane.showMessageDialog(null,"Error:\n"+e.getMessage()+"\nCausado por:\n"+e.getCause());
+                JOptionPane.showMessageDialog(this,"Error:\n"+e.getMessage());
+                e.printStackTrace();
             }
+        });
+    }
+    
+    protected void openPanel(Component panel){
+        EventQueue.invokeLater(()->{
+            this.getContentPane().setLayout(new BorderLayout());
+            this.getContentPane().add(panel,BorderLayout.CENTER);
+            this.pack();
         });
     }
     
@@ -112,7 +116,6 @@ public class mainFrame extends javax.swing.JFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
     private javax.swing.JMenu jMenu1;

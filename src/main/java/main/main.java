@@ -6,6 +6,7 @@
 package main;
 
 import gui.frame.mainFrame;
+import java.awt.EventQueue;
 
 /**
  * Main class to use test window
@@ -20,6 +21,8 @@ public class main{
      * @param args to be set
      */
     public static void main(String[] args){
-        new mainFrame().setVisible(true);
+        EventQueue.invokeLater(()->{
+            new mainFrame().setVisible(true);
+        });
     }
 }
